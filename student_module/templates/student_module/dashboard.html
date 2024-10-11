@@ -1,0 +1,14 @@
+{% extends 'layouts/base.html' %}
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<h1>Your Dashboard</h1>
+<h2>Borrowed Books</h2>
+
+<ul>
+  {% for book in borrowed_books %}
+    <li>{{ book.book.title }} - Return Date: {{ book.return_date }}</li>
+    <a href="{% url 'return_book' book.id %}">Return Book</a>
+  {% endfor %}
+</ul>
+{% endblock %}
