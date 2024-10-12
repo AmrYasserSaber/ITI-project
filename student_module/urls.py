@@ -1,6 +1,6 @@
 from django.urls import path
 from . import views
-from .views import login_view
+from .views import login_view,bookdelete,bookedite,bookdetails
 
 urlpatterns = [
     path('dashboard/', views.student_dashboard, name='student_dashboard'),
@@ -14,6 +14,13 @@ urlpatterns = [
     path('return/<int:borrowed_book_id>/', views.return_book, name='return_book'),
     path('signup/', views.signup, name='signup'),
     path('accounts/login/', login_view, name='login'),
+    path('books/<int:pk>/delete/', bookdelete.as_view(), name='book_delete'),
+    path('books/<int:pk>/edit/', bookedite.as_view(), name='book_edit'),
+    path('books/<int:pk>/', bookdetails.as_view(), name='book_details'),
+
+
+
+
 
     path('get_all_users/', views.get_all_users, name='get_all_users'),
 

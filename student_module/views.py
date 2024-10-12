@@ -5,9 +5,14 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate
 from django.contrib import messages
 from admin_module.views import admin_check
-from student_module.forms import StudentSignupForm, ReturnDateForm
+from student_module.forms import StudentSignupForm, ReturnDateForm, Bookform
 from django.shortcuts import get_object_or_404
 from django.contrib.auth.decorators import user_passes_test
+from django.views.generic.edit import CreateView,DeleteView,UpdateView
+from django.views.generic import DetailView
+from django.utils.decorators import method_decorator
+
+
 
 
 
@@ -203,3 +208,21 @@ def update_user(request, user_id):
         form = StudentSignupForm(instance=user)
 
     return render(request, 'student_module/update_user.html', {'form': form})
+
+@method_decorator(user_passes_test(admin_check), name='dispatch')
+class bookdelete(DeleteView):
+    model=Book
+    template_name='books/book_delete.html'
+    success_url='view_books'
+
+@method_decorator(user_passes_test(admin_check), name='dispatch')
+class bookedite(UpdateView):
+    model=Book
+    template_name='books/book_edite.html'
+    form_class= Bookform
+
+@method_decorator(login_required, name='dispatch')
+class bookdetails(DetailView):
+    model=Book
+    template_name='books/book_detail.html'
+    context_object_name='book'

@@ -35,8 +35,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'admin_module',
-    'student_module',
+    'admin_module.apps.AdminModuleConfig',
+    'student_module.apps.StudentModuleConfig',
 ]
 
 MIDDLEWARE = [
@@ -74,8 +74,12 @@ WSGI_APPLICATION = 'library_management.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'library_management' ,
+        'USER':'rashad',
+        'PASSWORD':'123',
+        'HOST':'localhost',
+        'PORT':'5432'
     }
 }
 
@@ -88,13 +92,16 @@ AUTH_PASSWORD_VALIDATORS = [
     },
     {
         'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+         'OPTIONS': {
+            'min_length': 4,  # Customize the minimum length
+        }
     },
-    {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-    },
+    # {
+    #     'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+    # },
+    # {
+    #     'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+    # },
 ]
 
 # Internationalization

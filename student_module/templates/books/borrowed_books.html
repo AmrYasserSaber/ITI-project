@@ -3,10 +3,11 @@
 
 {% block content %}
 
-<h2>Borrowed Books</h2>
+<h2 style="text-align: center; color: #32348f;">Borrowed Books</h2>
 
 {% if borrowed_books %}
-    <table>
+    <table rules="all" style="border: 3px solid #32348f; margin: 10px;;
+   ">
         <thead>
             <tr>
                 <th>Title</th>
@@ -32,6 +33,6 @@
     <p>No books have been borrowed yet.</p>
 {% endif %}
 
-<a href="{% url 'admin_main' %}">Back to Dashboard</a>
+<a href="{% url 'admin_main' %}" class="button" style="margin: 10px;">Dashboard</a>
 
 {% endblock %}

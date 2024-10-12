@@ -2,13 +2,22 @@
 {% block title %}Dashboard{% endblock %}
 
 {% block content %}
-<h1>Your Dashboard</h1>
-<h2>Borrowed Books</h2>
 
-<ul>
-  {% for book in borrowed_books %}
-    <li>{{ book.book.title }} - Return Date: {{ book.return_date }}</li>
-    <a href="{% url 'return_book' book.id %}">Return Book</a>
+<h3 style="text-align: center;">Welcome to Book Library</h3>
+<h2 style="text-align: center;">Borrowed Books</h2>
+
+
+<ul style="text-align: center; list-style: none;">
+   <li>
+       <a href="{% url 'view_books' %}" class="button" style="margin: 10px;">All Books</a>
+   </li>
+   <li>
+    {% for book in borrowed_books %}
+    <li><h3>{{ book.book.title }} - Return Date: {{ book.return_date }}</h3></li>
+    <a href="{% url 'return_book' book.id %}" class="button">Return Book</a>
   {% endfor %}
+   </li>
+ 
+  
 </ul>
 {% endblock %}

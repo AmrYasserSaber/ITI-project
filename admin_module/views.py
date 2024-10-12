@@ -9,12 +9,10 @@ def admin_check(user):
     return user.is_superuser
 
 
-@user_passes_test(admin_check)
 def main(request):
     return render(request, 'main.html')
 
 
-@user_passes_test(admin_check)
 def admin_dashboard(request):
     borrowed_books = BorrowedBook.objects.all()
     all_books = Book.objects.all()
@@ -24,7 +22,7 @@ def admin_dashboard(request):
         'all_books': all_books,
         'all_users': all_users,
     }
-    return render(request, './dashboard.html', context)
+    return render(request, './main.html', context)
 
 
 @user_passes_test(admin_check)
@@ -44,3 +42,10 @@ def search_student(request):
 @user_passes_test(admin_check)
 def find_student(request):
     return render(request, 'search_student.html')
+
+
+def about(request):
+    return render(request,'/about.html')
+
+def contact(request):
+    return render(request,'/contact.html')

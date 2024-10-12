@@ -15,12 +15,12 @@
         </form>
     {% else %}
         <h2 style="color:#32348f; text-align: center;">You are already logged in</h2>
-{#        <a href="{% url 'books_index' %}" class="button" style="margin-left: 20px;">Back</a>#}
-    {% endif %}
-    {% if next %}
-        <p style="display: inline-block; margin: 10px;">You must be logged in to view this page:
-            <a href="{{ next }}" class="button">Back</a>
+        {% if next %}
+        <p style="display: inline-block; margin: 10px;">You must be logged in as Admin to view this page:
         </p>
+        {% endif %}
+       <a href="{% url 'view_books' %}" class="button" style="margin-left: 20px;">Back</a>
     {% endif %}
+  
 
 {% endblock %}

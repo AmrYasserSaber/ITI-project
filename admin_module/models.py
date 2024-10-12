@@ -1,7 +1,10 @@
 from django.contrib.auth.models import AbstractUser
 from django.utils import timezone
+from django.shortcuts import reverse 
 from django.contrib.auth.models import AbstractUser, Group, Permission
 from django.db import models
+from django.core.exceptions import ValidationError
+
 
 
 class Student(AbstractUser):
@@ -31,8 +34,28 @@ class Book(models.Model):
     isbn = models.CharField(max_length=13, unique=True)
     copies_available = models.PositiveIntegerField()
 
+
     def __str__(self):
         return self.title
+    
+    def clean(self):
+        super().clean()
+        # Convert ISBN to an integer for comparison
+        try:
+            isbn_value = int(self.isbn)  # Convert the ISBN to an integer
+        except ValueError:
+            raise ValidationError('ISBN must be a valid number.')
+
+        if self.copies_available > isbn_value:
+            raise ValidationError('Copies available must be Less than the ISBN number.')
+
+    def save(self, *args, **kwargs):
+        self.clean()  # Call the clean method before saving
+        super().save(*args, **kwargs)
+    
+    def get_absolute_url(self):
+        url = reverse("book_details", args=[self.id])
+        return url
 
 class BorrowedBook(models.Model):
     student = models.ForeignKey(Student, on_delete=models.CASCADE)

@@ -33,6 +33,6 @@
     <p>No results found for "{{ request.GET.student_name }}".</p>
 {% endif %}
 
-<a href="{% url 'find_student' %}">Back to Search</a>
+<a href="{% url 'find_student' %}" class="button" style="margin: 10px;">Back</a>
 
 {% endblock %}

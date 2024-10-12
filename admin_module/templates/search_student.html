@@ -4,9 +4,10 @@
 {% block content %}
 <h2 style="text-align: center;">Search for a Student</h2>
 
-<form method="GET" action="{% url 'search_student' %}">
-    <label for="student_name"></label><input type="text" name="student_name" id="student_name" placeholder="Enter student name" required>
-    <button type="submit" class="button" style="margin-left: 10px;">Search</button>
+<form method="GET" action="{% url 'search_student' %}" style="margin: 10px;">
+    <label for="student_name">Student Name</label>
+    <input type="text" name="student_name" id="student_name" placeholder="Enter student name" required>
+    <button type="submit" class="button" style="margin-left: 10px; height: auto;">Search</button>
 </form>
 
 

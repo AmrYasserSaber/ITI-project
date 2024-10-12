@@ -2,12 +2,11 @@
 {% block title %}{{ book.title }}{% endblock %}
 {% block content %}
 <div class="card" >
-    <img src="{{ book.image_url }}"  alt="image">
     <div >
       <h3>Title:     {{book.title}}</h3>
       <h4>Author: {{ book.author }}</h4>
-      <h4>Available: {{ book.available }}</h4>
-      <h4>Total Copies:  {{ book.total }} </h4>
+      <h4>Available: {{ book.copies_available }}</h4>
+      <h4>Total Copies:  {{ book.isbn }} </h4>
       <p>{{book.overview}}</p>
         <a href="{% url 'view_books' %}" class="button" style="padding: 5px;margin: 5px;">Back to Books</a>
         <a href="{{ book.edit_url}}" class="button" style="padding: 5px;margin: 5px;">Edit</a>

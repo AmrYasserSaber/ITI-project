@@ -2,14 +2,16 @@
 {% block title %}Borrow Book{% endblock %}
 
 {% block content %}
-<h2>Borrow {{ book.title }}</h2>
-<p>Author: {{ book.author }}</p>
+<div style="margin: 30px;">
+<h3>Book: {{ book.title }}</h3>
+<h3>Author: {{ book.author }}</h3>
 
 <form method="POST">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit">Borrow</button>
+    <button type="submit" class="button" style="height: auto;">Borrow</button>
 </form>
 
-<a href="{% url 'view_books' %}">Cancel</a>
+<a href="{% url 'view_books' %}" class="button">Cancel</a>
+</div>
 {% endblock %}

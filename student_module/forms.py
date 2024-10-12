@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
-from admin_module.models import Student, BorrowedBook
+from admin_module.models import Student, BorrowedBook,Book
 
 
 class StudentSignupForm(UserCreationForm):
@@ -23,3 +23,8 @@ class BorrowBookForm(forms.ModelForm):
 
 class ReturnDateForm(forms.Form):
     return_date = forms.DateField(widget=forms.SelectDateWidget(), label="Return Date")
+
+class Bookform(forms.ModelForm):
+    class Meta:
+        model =Book
+        fields= '__all__'
