@@ -3,6 +3,7 @@
 {% block title %}All Users{% endblock %}
 
 {% block content %}
+<div style="margin: 10px;">
     <h2 style="text-align: center; color: #32348f;">All Users</h2>
     <a href="{% url 'add_user' %}" class="button">Add New User</a>
     <table style="width: 100%; border-collapse: collapse;">
@@ -34,4 +35,6 @@
     </table>
 
     <a href="{% url 'admin_main' %}" class="button" style="margin-top: 20px;">Back </a>
+
+</div>
 {% endblock %}

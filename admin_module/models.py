@@ -8,7 +8,7 @@ from django.core.exceptions import ValidationError
 
 
 class Student(AbstractUser):
-    student_id = models.CharField(max_length=10, unique=True)
+    student_id = models.IntegerField(unique=True,null=True)
     email = models.EmailField(unique=True)
 
     # Override the groups and user_permissions to avoid clashes

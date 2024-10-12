@@ -36,7 +36,7 @@
         <input type="submit" value="Save"  class="button" style="height: auto;  ">
         </div>
     </form>
-    <a href="{{ book.show.url }}" class="button" style="margin: 10px;">Cancel</a>
+    <a href="{% url 'book_details' book.id %}" class="button" style="margin: 10px;">Cancel</a>
 
     
 

@@ -125,7 +125,9 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-LOGIN_REDIRECT_URL = 'student_dashboard'  # Redirect after successful login
+LOGIN_URL = 'login'  # Adjust to your login URL name
+LOGOUT_URL = 'logout'  # Adjust to your logout URL name
+LOGIN_REDIRECT_URL = 'admin_dashboard'  # Redirect after successful login
 LOGOUT_REDIRECT_URL = 'login'  # Redirect after logout
 AUTH_USER_MODEL = 'admin_module.Student'
 
@@ -133,3 +135,6 @@ AUTHENTICATION_BACKENDS = [
     'admin_module.backends.StudentBackend',  # Add your custom backend here
     'django.contrib.auth.backends.ModelBackend',  # Default backend for other user types
 ]
+
+
+

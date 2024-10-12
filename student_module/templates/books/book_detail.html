@@ -9,9 +9,9 @@
       <h4>Total Copies:  {{ book.isbn }} </h4>
       <p>{{book.overview}}</p>
         <a href="{% url 'view_books' %}" class="button" style="padding: 5px;margin: 5px;">Back to Books</a>
-        <a href="{{ book.edit_url}}" class="button" style="padding: 5px;margin: 5px;">Edit</a>
+        <a href="{% url 'book_edit' book.id %}" class="button" style="padding: 5px;margin: 5px;">Edit</a>
 
-        <a href="{{ book.delete_url }}" class="button" style="padding: 5px;margin: 5px;">Delete</a>
+        <a href="{% url 'book_delete' book.id %}" class="button" style="padding: 5px;margin: 5px;">Delete</a>
     </div>
 </div>
 {% endblock %}

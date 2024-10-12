@@ -28,15 +28,17 @@ def admin_dashboard(request):
 @user_passes_test(admin_check)
 def search_student(request):
     results = []
-    student_name = request.GET.get('student_name', '').strip()
+    student_id = request.GET.get('student_id', '').strip()  # Get the student ID from the request
 
-    if student_name:  # Only perform the search if there's a name provided
-        # Search by first name or last name
-        results = Student.objects.filter(
-            username__icontains=student_name
-        )
+    if student_id:  # If there's an ID provided, filter by ID
+        try:
+            student_id = int(student_id)  # Convert ID to integer
+            results = Student.objects.filter(id=student_id)  # Filter by ID
+        except ValueError:
+            # Handle the case where the ID is not a valid integer
+            results = []
 
-    return render(request, 'search_results.html', {'results': results, 'student_name': student_name})
+    return render(request, 'search_results.html', {'results': results, 'student_id': student_id})
 
 
 @user_passes_test(admin_check)
@@ -45,7 +47,7 @@ def find_student(request):
 
 
 def about(request):
-    return render(request,'/about.html')
+    return render(request,'about.html')
 
 def contact(request):
-    return render(request,'/contact.html')
+    return render(request,'contact.html')

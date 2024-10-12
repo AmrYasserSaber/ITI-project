@@ -26,9 +26,12 @@
         <input type="number" id="copies_available" name="copies_available" min="1" required><br>
     </div>
 
-    <button type="submit">Create</button>
+    <div class="form-group">
+        <input type="submit" value="Save"  class="button" style="height: auto;  ">
+    </div>
+
 </form>
 
-<a href="{% url 'view_books' %}">Cancel</a>
+<a href="{% url 'view_books' %}" class="button" style="margin: 10px;">Cancel</a>
 
 {% endblock %}
